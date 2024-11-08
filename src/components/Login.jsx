@@ -1,14 +1,20 @@
 import axios from "axios";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addUser } from "../utils/userSlice";
+import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/login",
+        `${BASE_URL}/login`,
         {
           email,
           password,
@@ -16,7 +22,8 @@ const Login = () => {
         // so that we can store cookies in application in browser
         { withCredentials: true }
       );
-      console.log(res);
+      dispatch(addUser(res.data));
+      navigate("/");
     } catch (err) {
       console.log(err);
     }

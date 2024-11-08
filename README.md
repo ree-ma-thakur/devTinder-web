@@ -16,3 +16,9 @@
 - Install axios
 - CORS - Install it on BE & add cors middleware with configurations: origin, credentials : true
 - Whenever making API call pass {withCredentials : true}
+- Install Redux toolkit
+- https://redux-toolkit.js.org/tutorials/quick-start
+- ConfigureStore > Provider > createSlice > add reducer to store
+- Added Redux dev tool extension in chrome
+- Login & store the data in user store
+- Navbar updation as user login
